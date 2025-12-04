@@ -1,0 +1,398 @@
+openapi: 3.0.0
+info:
+  title: orders-api
+  version: 1.0.0
+  description: ''
+servers:
+  - url: http://localhost:3838
+    description: Development
+paths:
+  /:
+    get:
+      summary: Root
+      tags:
+        - Health
+      responses:
+        '200':
+          description: 200 - Success
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+  /orders:
+    post:
+      summary: Create Order
+      tags:
+        - Orders
+      responses:
+        '201':
+          description: 201 - Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+        '422':
+          description: 422 - Invalid input
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customerId:
+                  type: string
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      quantity:
+                        type: integer
+                      price:
+                        type: integer
+    get:
+      summary: List Orders
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: 200 - Success
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+  /orders/{id}:
+    get:
+      summary: Show Order
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: 200 - Success
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+        '404':
+          description: 404 - Not found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      summary: Update Order Status
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: 200 - Success
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  customerId:
+                    type: string
+                  totalAmount:
+                    type: integer
+                  status:
+                    type: string
+        '404':
+          description: 404 - Not Found
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+                  context:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+        '422':
+          description: 422 - Invalid Status
+          headers:
+            X-Powered-By:
+              deprecated: false
+              schema: {}
+            Access-Control-Allow-Origin:
+              deprecated: false
+              schema: {}
+            Content-Length:
+              deprecated: false
+              schema: {}
+            ETag:
+              deprecated: false
+              schema: {}
+            Date:
+              deprecated: false
+              schema: {}
+            Connection:
+              deprecated: false
+              schema: {}
+            Keep-Alive:
+              deprecated: false
+              schema: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  type:
+                    type: string
+                  message:
+                    type: string
+                  context:
+                    type: object
+                    properties:
+                      formErrors:
+                        type: array
+                        items: {}
+                      fieldErrors:
+                        type: object
+                        properties:
+                          status:
+                            type: array
+                            items:
+                              type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+    delete:
+      summary: Cancel Order
+      tags:
+        - Orders
+      responses:
+        '200':
+          description: 200 - Success
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
+        '422':
+          description: 422 - Invalid status
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Content-Length:
+              schema:
+                type: integer
+            ETag:
+              schema:
+                type: string
+            Date:
+              schema:
+                type: string
+            Connection:
+              schema:
+                type: string
+            Keep-Alive:
+              schema:
+                type: string
